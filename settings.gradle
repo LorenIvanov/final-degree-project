@@ -1,0 +1,5 @@
+rootProject.name = 'speechy'
+include 'speech-recognition'
+include 'text-to-speech'
+include 'speech-to-text'
+
