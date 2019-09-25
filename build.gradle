@@ -2,15 +2,18 @@ group 'speechy'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'com.google.cloud:google-cloud-speech:1.20.0'
     compile 'com.google.guava:guava:28.1-jre'
+    implementation 'com.github.goxr3plus:java-google-speech-api:8.0.0'
 }
