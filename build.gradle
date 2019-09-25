@@ -16,4 +16,5 @@ dependencies {
     compile 'com.google.cloud:google-cloud-speech:1.20.0'
     compile 'com.google.guava:guava:28.1-jre'
     implementation 'com.github.goxr3plus:java-google-speech-api:8.0.0'
+    compile 'com.github.vegidio:google-translate:1.0.1'
 }

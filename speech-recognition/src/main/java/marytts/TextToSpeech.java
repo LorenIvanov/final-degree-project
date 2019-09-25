@@ -1,7 +1,5 @@
 package marytts;
 
-import marytts.LocalMaryInterface;
-import marytts.MaryInterface;
 import marytts.exceptions.MaryConfigurationException;
 import marytts.exceptions.SynthesisException;
 import marytts.modules.synthesis.Voice;

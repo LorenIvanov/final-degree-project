@@ -100,6 +100,5 @@ public class TryGoogleSpeechRecognitionSimple implements GSpeechResponseListener
     @Override
     public void onResponse(GoogleResponse paramGoogleResponse) {
         // TODO Auto-generated method stub
-
     }
 }

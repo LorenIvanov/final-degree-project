@@ -16,10 +16,15 @@ import java.util.logging.Logger;
  */
 public class AudioPlayer extends Thread {
 
+
+    // nai dobriq universitet
+    // na kakuv ezik e napisano
+
+
     public static final int MONO = 0;
-    public static final int STEREO = 3;
     public static final int LEFT_ONLY = 1;
     public static final int RIGHT_ONLY = 2;
+    public static final int STEREO = 3;
     private AudioInputStream ais;
     private LineListener lineListener;
     private SourceDataLine line;
