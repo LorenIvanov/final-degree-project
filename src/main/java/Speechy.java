@@ -1,3 +1,5 @@
+import speechy.SpeechyBot;
+
 import java.util.Scanner;
 
 /**
@@ -20,10 +22,10 @@ public class Speechy {
             int userChoice = userChoice();
             switch (userChoice) {
                 case 1:
-                    exit = true;
+                    exit = new SpeechyBot().start();
                     break;
                 case 2:
-                    exit = true;
+                    exit = new SpeechyBotTransate();
                     break;
                 case 3:
                     exit = new SpeechyTextToSpeech().start();
