@@ -1,4 +1,5 @@
 import speechy.SpeechyBot;
+import speechy.SpeechyBotTranslate;
 
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public class Speechy {
 
     private void start() {
         boolean exit = false;
+        Scanner sc = new Scanner(System.in);
         while (!exit) {
             displayMenu();
             int userChoice = userChoice();
@@ -25,7 +27,11 @@ public class Speechy {
                     exit = new SpeechyBot().start();
                     break;
                 case 2:
-                    exit = new SpeechyBotTransate();
+                    System.out.println("Enter your language. Example: 'en'.");
+                    String fromLang = sc.next();
+                    System.out.println("Enter language to which Speechy will translate. Example: 'bg'.");
+                    String toLang = sc.next();
+                    exit = new SpeechyBotTranslate().start(fromLang, toLang);
                     break;
                 case 3:
                     exit = new SpeechyTextToSpeech().start();

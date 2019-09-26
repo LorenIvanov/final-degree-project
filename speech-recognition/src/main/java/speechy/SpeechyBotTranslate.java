@@ -7,7 +7,6 @@ import marytts.signalproc.effects.RobotiserEffect;
 import net.sourceforge.javaflacencoder.FLACFileWriter;
 
 import javax.sound.sampled.LineUnavailableException;
-import java.util.Date;
 
 public class SpeechyBotTranslate {
     private final TextToSpeech tts = new TextToSpeech();
@@ -16,8 +15,14 @@ public class SpeechyBotTranslate {
     private String oldText = "";
     private boolean recognizing = true;
 
-    public boolean start() {
-        duplex.setLanguage("en");
+    private String fromLang = "en";
+    private String toLang = "es";
+
+    public boolean start(String fromLang, String toLang) {
+        this.fromLang = fromLang;
+        this.toLang = toLang;
+
+        duplex.setLanguage(fromLang);
 
         duplex.addResponseListener(googleResponse -> {
             String output;
@@ -48,7 +53,12 @@ public class SpeechyBotTranslate {
         startSpeechy();
         while (recognizing) {
             try {
-                Thread.sleep(5000);
+                try {
+//                    speak(SpeechyTranslator2.translate("bg", "es", "Здравей, как си?"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Thread.sleep(50000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -68,36 +78,16 @@ public class SpeechyBotTranslate {
         else
             return;
 
-        if (output.contains("hello")) {
-            speak("Who is there");
-
-        } else if (output.contains("loren")) {
-            speak("hello loren.");
-
-        } else if (output.contains("introduce yourself")) {
-            speak("My name is Speechy, I am robot.");
-
-        } else if (output.contains("who are you")) {
-            speak("My name is Speechy, I am robot.");
-
-        } else if (output.contains("what is your profession")) {
-            speak("I am a Robot.");
-
-        } else if (output.contains("where do you live")) {
-            speak("Inside the computer.");
-
-        } else if (output.contains("what's the time") || output.contains("what is the time")) {
-            speak(new Date().toString());
-
-        } else if (output.contains("what's the date") || output.contains("what is the date")) {
-            speak("twenty seventh of september two thousand and nineteen.");
-
-        } else if (output.equals("stop")) {
+        if (output.equals("stop")) {
             mic.close();
             recognizing = false;
 
         } else {
-            System.out.println("Speechy can't recognize voice command. Try again.");
+            try {
+                speak(SpeechyTranslator2.translate(fromLang, toLang, output));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }
