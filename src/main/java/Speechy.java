@@ -27,6 +27,7 @@ public class Speechy {
                     exit = true;
                 case 4:
                     exit = SpeechyTranslator.start();
+                    break;
                 case 0:
                     exit = true;
             }

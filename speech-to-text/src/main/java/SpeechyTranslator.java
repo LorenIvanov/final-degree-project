@@ -34,8 +34,16 @@ public class SpeechyTranslator {
             String userChoice = "";
             do {
                 userChoice = sc.next();
-            } while (userChoice.equals("y") || userChoice.equals("n"));
+            } while (!(userChoice.equals("y") || userChoice.equals("n")));
+
             if (userChoice.equals("n")) {
+
+                System.out.println("Do you want to go back to the main menu? (y/n)");
+                String userChoiceMainMenu = "";
+                do {
+                    userChoiceMainMenu = sc.next();
+                } while (!(userChoiceMainMenu.equals("y") || userChoiceMainMenu.equals("n")));
+                exit = userChoiceMainMenu.equals("n");
                 break;
             }
         }
