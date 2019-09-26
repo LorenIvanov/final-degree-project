@@ -21,10 +21,13 @@ public class Speechy {
             switch (userChoice) {
                 case 1:
                     exit = true;
+                    break;
                 case 2:
                     exit = true;
+                    break;
                 case 3:
-                    exit = true;
+                    exit = new SpeechyTextToSpeech().start();
+                    break;
                 case 4:
                     exit = SpeechyTranslator.start();
                     break;
@@ -36,7 +39,7 @@ public class Speechy {
 
     private int userChoice() {
         boolean validChoice = false;
-        int userChoice = 100;
+        int userChoice = 777;
 
         while (!validChoice) {
             while (!scanner.hasNextInt()) {

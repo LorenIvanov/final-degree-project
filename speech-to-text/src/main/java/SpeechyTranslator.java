@@ -15,7 +15,7 @@ public class SpeechyTranslator {
      * Entry Point
      */
     public static boolean start() {
-        boolean exit = false;
+        boolean exit;
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("Enter text to be translated:");
@@ -53,7 +53,7 @@ public class SpeechyTranslator {
     /**
      * Sends out a WhatsApp message via WhatsMate WA Gateway.
      */
-    private static void translate(String fromLang, String toLang, String text) throws Exception {
+    public static void translate(String fromLang, String toLang, String text) throws Exception {
         // TODO: Should have used a 3rd party library to make a JSON string from an object
         String jsonPayload = new StringBuilder()
                 .append("{")
