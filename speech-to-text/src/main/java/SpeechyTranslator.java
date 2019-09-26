@@ -3,6 +3,7 @@ import java.io.OutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Scanner;
 
 public class SpeechyTranslator {
     // TODO: If you have your own Premium account credentials, put them down here:
@@ -13,19 +14,38 @@ public class SpeechyTranslator {
     /**
      * Entry Point
      */
-    public static void main(String[] args) throws Exception {
-        // TODO: Specify your translation requirements here:
-        String fromLang = "en";
-        String toLang = "es";
-        String text = "Let's have some fun!";
+    public static boolean start() {
+        boolean exit = false;
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("Enter text to be translated:");
+            String text = sc.next();
+            System.out.println("Enter text language. Example: 'en'.");
+            String fromLang = sc.next();
+            System.out.println("Enter text language to be translated in. Example: 'bg'.");
+            String toLang = sc.next();
 
-        SpeechyTranslator.translate(fromLang, toLang, text);
+            try {
+                translate(fromLang, toLang, text);
+            } catch (Exception e) {
+                System.err.println("Unsupported translation.");
+            }
+            System.out.println("Do you want to translate another text? (y/n)");
+            String userChoice = "";
+            do {
+                userChoice = sc.next();
+            } while (userChoice.equals("y") || userChoice.equals("n"));
+            if (userChoice.equals("n")) {
+                break;
+            }
+        }
+        return exit;
     }
 
     /**
      * Sends out a WhatsApp message via WhatsMate WA Gateway.
      */
-    public static void translate(String fromLang, String toLang, String text) throws Exception {
+    private static void translate(String fromLang, String toLang, String text) throws Exception {
         // TODO: Should have used a 3rd party library to make a JSON string from an object
         String jsonPayload = new StringBuilder()
                 .append("{")
@@ -64,5 +84,4 @@ public class SpeechyTranslator {
         }
         conn.disconnect();
     }
-
 }

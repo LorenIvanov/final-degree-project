@@ -25,6 +25,8 @@ public class Speechy {
                     exit = true;
                 case 3:
                     exit = true;
+                case 4:
+                    exit = SpeechyTranslator.start();
                 case 0:
                     exit = true;
             }
@@ -42,7 +44,7 @@ public class Speechy {
             }
             userChoice = scanner.nextInt();
 
-            if (userChoice >= 0 && userChoice <= 3) {
+            if (userChoice >= 0 && userChoice <= 4) {
                 validChoice = true;
             } else {
                 System.out.println("Please press valid key.");
